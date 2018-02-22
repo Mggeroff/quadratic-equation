@@ -1,14 +1,11 @@
 module.exports = function solveEquation(equation) {
     let regex = /[^\^]\d+/g;
-    let numMatch;
-    let tempArr = [];
-    while (numMatch = regex.exec(equation.replace(/[^0-9-+x]/g, ''))) {
-        tempArr.push(numMatch[0]);
-    }
 
-    let a = tempArr[0];
-    let b = tempArr[2];
-    let c = tempArr[3];
+    let input = equation.replace(/[^0-9-+x^0-9]/g, '').match(regex);
+
+    let a = parseInt(input[0]);
+    let b = parseInt(input[1]);
+    let c = parseInt(input[2]);
 
     let Discriminant = (Math.pow(b, 2) - 4 * a * c);
 
